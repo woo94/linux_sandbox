@@ -1,4 +1,0 @@
-## Instances and AMIs
-AMI is a template that contains a software configuration. From an AMI, you launch an instance, which is a copy of the AMI running as a virtual server.  
-
-## Instances
