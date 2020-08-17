@@ -1,4 +1,4 @@
 ## Instances and AMIs
+AMI is a template that contains a software configuration. From an AMI, you launch an instance, which is a copy of the AMI running as a virtual server.  
 
-AMI is a template that contains a software configuration. From an AMI, you launch an instance, which is a copy of the AMI running as a virtual server.
-<img src='https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/images/architecture_ami_instance.png'>
+## Instances
