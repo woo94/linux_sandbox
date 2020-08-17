@@ -1,0 +1,8 @@
+woo계정에 authorized_keys 파일이 없는 것을 이전에 확인하였다.  
+현재 ubuntu 계정에 있는 authorized_keys 파일(/home/ubuntu/.ssh/authorized_keys)를 /home/woo/.ssh/authorized_keys로 옮기면 키파일은 알아서 woo 계정으로 접속을 하게 될 것이다.
+
+![step1]('/images/moveKey1.png)
+woo 계정에 .ssh 디렉토리를 만들고(mkdir), /home/ubuntu/.ssh/authorized_keys를 mv 명령어를 사용하여 새로 만든 디렉토리로 이동시킨다.
+
+![step2]('/images/moveKey2.png)
+이제 키파일을 가지고 woo 계정으로 접속해보자(이때, ssh 커맨드 속 주소에 ubuntu@[Public DNS]를 woo@[Public DNS]로 바꾸어준다).
