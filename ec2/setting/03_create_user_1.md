@@ -38,26 +38,33 @@ sudo su - woo 커맨드를 사용하여 해당 계정으로 사용자 전환을 
 
 ![3](./images/createUser3.png)
 woo 계정의 home directory(/home/woo) 에 .ssh 디렉토리가 존재하는지 본다. 존재하지 않는다. 'mkdir .ssh' 커맨드로 디렉토리를 생성해주고 'chmod 700 .ssh' 로 디렉토리의 permission을 변경해준다.
+<br /><br />
 
 ![4](./images/createUser4.png)
 'touch .ssh/authorized_keys' 커맨드로 파일을 생성해주고 'chmod 600 .ssh/authorized_keys' 커맨드로 permission을 변경해준다. 
+<br /><br />
 
 ### 이제 EC2 dashboard에 가서 키 페어를 생성하고, private key를 받아오자.
 ![5](./images/createUser5.png)
 다음과 같이 keyFile_woo.pem 파일을 받는다. 현재 받은 파일은 private key이고, 이에 대한 public key를 가져와야 된다. 'ssh-keygen -y -f /path_to_key_pair/my-key-pair.pem' 커맨드를 사용해서 퍼블릭 키를 반환해보자.
+<br /><br />
 
 ![6](./images/createUser6.png)
 이제 이 내용을 서버 인스턴스의 /home/woo/.ssh/authorized_keys 에 넣는다.
+<br /><br />
 
 ![7](./images/createUser7.png)
 한칸 띄어쓰고 keyFile_woo 를 적는 것으로 끝낸다.
+<br /><br />
 
 ![8](./images/createUser8.png)
 해당 키 페어의 지문을 확인한다. 로컬 pc에 있는 private key가 EC2 dashboard에 존재하는 public key와 일치하는지 확인한다. 'openssl pkcs8 -in path_to_private_key -inform PEM -outform DER -topk8 -nocrypt | openssl sha1 -c' 커맨드를 이용한다.
+<br /><br />
 
 ![9](./images/createUser9.png)
 'sudo usermod -aG sudo woo' 커맨드를 사용하여 woo 계정에 root 권한을 부여해준다(sudo 그룹에 woo 계정을 추가하는 커맨드이다). 이때, woo 계정은 아직 root권한이 없으므로 sudo 커맨드를 사용하지 못한다. root 혹은 ubuntu 계정으로 exit한 뒤 커맨드를 실행한다. 
 woo 계정이 sudo 그룹에 제대로 되었는지 /etc/group 에 들어가서 확인해본다.
+<br /><br />
 
 ![10](./images/createUser10.png)
 이제 새로운 키파일을 가지고 인스턴스에 접속해본다.
