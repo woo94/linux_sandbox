@@ -13,15 +13,16 @@ root 계정은 administrator 로써 모든 권한을 가지고 있다. root가 �
 하나의 키는 private key, public key의 2가지 형태로 존재한다. Private key의 경우 인스턴스에 접속하려는 사용자의 pc에 .pem 파일로 저장되어있다. Public key는 EC2 콘솔의 키페어로, 그리고 서버 인스턴스 내부에 저장되어있다. 접속시에 사용자가 제시한 계정과 private key가 인스턴스 내부의 public key(계정에 해당하는)와 일치하는지 확인한다.
 <br /> <br />
 
-Public key가 어디에 존재하는지 알아보자.
-![publickey1](./images/publickey1.png)
+### Public key가 어디에 존재하는지 알아보자.
+<br />
 1. ubuntu 계정의 경우, /home/ubuntu/.ssh/authorized_keys 에 존재한다.  
 해당 파일을 열어보니 rsa 형식의 키가 있고, public key의 내용과 한칸을 띄고 키파일의 이름이 적혀있다(도중에 sandbox->keyFile로 키파일 이름을 변경하였다). 
+![publickey1](./images/publickey1.png)
 <br /><br />
 
-![publickey2](./images/publickey2.png)
 2. root 계정의 경우, /root/.ssh/authorized_keys 에 존재한다.  
 ubuntu 계정과 같은 형식의 내용의 파일이고 놀랍게도 키파일 이름이 ubuntu 계정과 일치했다. 하지만 root로 로그인하지 말아달라고 하지 않기로 하겠다.
+![publickey2](./images/publickey2.png)
 <br /><br />
 
 새로 만든 계정 또한 기존 혹은 새로운 키파일의 public key 내용이 해당 계정(/home/[user_name])의 .ssh/authorized_keys 파일에 존재하면 되겠다.
