@@ -51,7 +51,7 @@ woo 계정의 home directory(/home/woo) 에 .ssh 디렉토리가 존재하는지
 ### 이제 EC2 dashboard에 가서 키 페어를 생성하고, private key를 받아오자.
 ![5](./images/createUser5.png)
 <br />
-다음과 같이 keyFile_woo.pem 파일을 받는다. 현재 받은 파일은 private key이고, 이에 대한 public key를 가져와야 된다. 'ssh-keygen -y -f /path_to_key_pair/my-key-pair.pem' 커맨드를 사용해서 퍼블릭 키를 반환해보자.
+다음과 같이 keyFile_woo.pem 파일을 받는다. 현재 로컬 pc에 받은 파일은 private key이고, 이 키에 대응하는 public key 값을 가져와야 된다. 'ssh-keygen -y -f /path_to_key_pair/my-key-pair.pem' 커맨드를 사용해서 public key를 반환해보자.
 <br /><br /><hr />
 
 ![6](./images/createUser6.png)
