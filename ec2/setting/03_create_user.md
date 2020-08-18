@@ -14,7 +14,7 @@ root 계정은 administrator 로써 모든 권한을 가지고 있다. root가 �
 <br /> <br />
 
 ### Public key가 어디에 존재하는지 알아보자.
-<br />
+<hr />
 1.ubuntu 계정의 경우, /home/ubuntu/.ssh/authorized_keys 에 존재한다.  
 해당 파일을 열어보니 rsa 형식의 키가 있고, public key의 내용과 한칸을 띄고 키파일의 이름이 적혀있다(도중에 sandbox->keyFile로 키파일 이름을 변경하였다).
 <br/>
@@ -29,6 +29,7 @@ ubuntu 계정과 같은 형식의 내용의 파일이고 놀랍게도 키파일 
 새로 만든 계정 또한 기존 혹은 새로운 키파일의 public key 내용이 해당 계정(/home/[user_name])의 .ssh/authorized_keys 파일에 존재하면 되겠다.
 
 ### 우선 'woo' 라는 새로운 계정을 만들어서 root 권한을 부여해주자.
+<hr />
 ![1](./images/createUser1.png)
 <br />
 adduser 커맨드를 사용하고 --disabled-password option을 추가해주어서 해당 계정으로 접속 시 비밀번호를 요구하지 않게한다. 
