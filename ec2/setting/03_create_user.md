@@ -21,7 +21,7 @@ root 계정은 administrator 로써 모든 권한을 가지고 있다. root가 �
 <br /><br />
 
 2.root 계정의 경우, /root/.ssh/authorized_keys 에 존재한다.  
-ubuntu 계정과 같은 형식의 내용의 파일이고 놀랍게도 키파일 이름이 ubuntu 계정과 일치했다. 하지만 root로 로그인하지 말아달라고 하지 않기로 하겠다.
+ubuntu 계정과 같은 형식의 내용의 파일이고 놀랍게도 키파일 이름이 ubuntu 계정과 일치했다. 하지만 root로 로그인하지 말아달라고 하니  않기로 하겠다.
 ![publickey2](./images/publickey2.png)
 <br /><br />
 
