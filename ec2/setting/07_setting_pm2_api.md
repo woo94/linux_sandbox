@@ -1,3 +1,4 @@
+## ecosystem.config.js 작성하기
 이전과 같이
 ```
 pm2 ecosystem
@@ -19,6 +20,7 @@ module.exports = {
 }
 ```
 
+## index.js 작성
 이제 위의 script에 들어간 index.js 파일을 작성해보자. pm2와 신호를 처리하는 부분을 작성해보겠다. 
 
 ```
@@ -49,3 +51,30 @@ server.listen(port, () => {
 ```
 
 주석 이외에 설명할점은, server.close()의 경우 서버 프로세스의 삭제를 의미하지 않는다. 더 이상 새로운 connection을 하지 않고, 현재의 connection만을 유지하겠다는 의미이다. kill_timeout이 4초이니, 'SIGINT'를 받아들이고 여태까지 connection된 request들만 처리하는 마지막 4초를 준다. 4초 이후에는 pm2에서 서버 프로세스로 'SIGKILL'을 보내게 되어 4초동안 해결되지 않은 request들은 응답을 받을 수 없게된다.
+
+## 시나리오 확인하기
+코드 중간에 섞여있는 console.log는 
+```
+pm2 logs
+```
+명령어를 통해서 확인할 수 있다.
+<br>
+일단 
+```
+pm2 start ecosystem.config
+```
+를 통해서 api-server를 실행해보자.
+![pm2](./images/pm2.png)
+<br>
+api-server 프로세스에서 Server is ready on tcp:7777 port 가 출력됨을 확인할 수 있다.
+<br>
+<br>
+이번에는 외부에서 SIGINT 신호를 주어 restart가 제대로 되는지 확인해보겠다.
+```
+pm2 sendSignal SIGINT api-server
+```
+명령어로 api-server 프로세스에 SIGINT를 준다.
+
+![pm3](./images/pm3.png)
+<br>
+제대로 서버가 종료되었고, 재시작 되었음을 확인할 수 있다.
