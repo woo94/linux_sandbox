@@ -36,7 +36,7 @@ module.exports = {
 Node.js 환경에서 static folder를 serve 하는 가벼운 모듈이다. -s 옵션으로 모든 not-found request를 rewrite해준다. -l 5000 을 통해 localhost:5000에 endpoint를 설정해준다.
 
 ### 2. pm2 cluster 설정
-EC2 dashboard로 가서 내 인스턴스의 vCPU를 보았다. Free tier이다보니 단 한개네. 그래도 서비스가 단 한개의 프로세스에 의해서 제공되는것은 에러가 일어날시에 유연한 대처가 어렵다보니 4개로 해주겠다. 1개의 프로세스가 잘못되면 잘못된 프로세스를 종료하고 새로 갈아끼워주면서 기존의 프로세스가 대신 일을 수행해준다.
+EC2 dashboard로 가서 내 인스턴스의 vCPU를 보았다. Free tier이다보니 단 한개였다;; 그래도 서비스가 단 한개의 프로세스에 의해서 제공되는것은 에러가 일어날시에 유연한 대처가 어렵다보니 4개로 해주겠다. 1개의 프로세스가 잘못되면 잘못된 프로세스를 종료하고 새로 갈아끼워주면서 기존의 프로세스가 대신 일을 수행해준다. cluster mode로 인해서, 하나의 포트에 4개의 process를 걸어두고 사용할 수 있다.
 
 ### 3. watch 설정
 파일의 변경을 감지하고, 변경이 감지되면 stop & restart해주는 옵션이다. 이 옵션이 없으면 파일이 바뀔때마다 'pm2 reload [process_name]' 혹은 'pm2 stop [process_name] 이후 pm2 restart [process_name]'의 커맨드로 눌러줘야된다. 이때, ignore_watch: ["file name"]을 설정해주어서 불필요한 watch를 없앤다. 현재 프로세스는 build 디렉토리 안에 있는 정적 파일 만을 serve하는 프로세스 이므로 나머지 파일들을 이 안에 적어준다('src', 'node_modules'...).
