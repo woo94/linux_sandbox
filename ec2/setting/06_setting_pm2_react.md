@@ -54,8 +54,33 @@ pm2 start ecosystem.config.js
 ```
 위 커맨드를 입력하면 된다.
 
-### 후기
+### ! Error발생
 cluster mode에서 error가 발생한다. Debug결과 Using 2 paralleism이라면서 안된다. 이전 서버에서 fork 모드만 사용해서 이왕 새로하는거 cluster mode를 사용하고 싶었는데... CPU가 하나라서 안되나보다. 주석 2번 아래 코드를 전부 지워줘야겠다.
+
+### watch & restart 확인하기
+```
+//react-app/src/App.js의 내용을 다음과 같이 변경해준다
+
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+   <h1> HI ! </h1>
+  );
+}
+
+export default App;
+```
+
+아래 명령어로 바뀐 웹앱을 빌드해준다. 이 명령어로 build 폴더의 내부 내용이 바뀐다. 이론상은 build 폴더의 내용이 바뀌니 pm2는 이를 감지해서 프로세스를 reload 해야된다.
+```
+npm run build
+```
+![build](./images/build.png)
+<br><br>
+watch와 restart가 제대로 되는 것을 확인하였다.
 
 
 정적인 react build file 같은 경우는 사실 단 한번 web app을 다운로드 받으면 되는 일이기 때문에 프로세스 종료와 재시작같을때 신호를 주고 받는것이 무의미할 수 있다. Express server에서 pm2와 signal을 주고받는 flow를 다음글에서 설명하겠다.
