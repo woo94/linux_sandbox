@@ -48,4 +48,4 @@ server.listen(port, () => {
 )
 ```
 
-주석 이외에 설명할점은, server.close()의 경우 서버 프로세스의 삭제를 의미하지 않는다. 더 이상 새로운 connection을 하지 않고, 현재의 connection만을 유지하겠다는 의미이다. kill_timeout이 4초이니, 'SIGINT'를 받아들이고 여태까지 connection된 request들만 처리해주는데 4초를 준다. 4초 이후에는 pm2에서 서버 프로세스로 'SIGKILL'을 보내게 되어 4초동안 해결되지 않은 request들은 응답을 받을 수 없게된다.
+주석 이외에 설명할점은, server.close()의 경우 서버 프로세스의 삭제를 의미하지 않는다. 더 이상 새로운 connection을 하지 않고, 현재의 connection만을 유지하겠다는 의미이다. kill_timeout이 4초이니, 'SIGINT'를 받아들이고 여태까지 connection된 request들만 처리하는 마지막 4초를 준다. 4초 이후에는 pm2에서 서버 프로세스로 'SIGKILL'을 보내게 되어 4초동안 해결되지 않은 request들은 응답을 받을 수 없게된다.
