@@ -59,21 +59,22 @@ pm2 logs
 ```
 명령어를 통해서 확인할 수 있다.
 <br>
-일단 
+
+일단 아래 명령어를 통해서 api-server를 실행해보자.
 ```
 pm2 start ecosystem.config
 ```
-를 통해서 api-server를 실행해보자.
+
 ![pm2](./images/pm2.png)
 <br>
 api-server 프로세스에서 Server is ready on tcp:7777 port 가 출력됨을 확인할 수 있다.
 <br>
 <br>
-이번에는 외부에서 SIGINT 신호를 주어 restart가 제대로 되는지 확인해보겠다.
+이번에는 외부에서 SIGINT 신호를 주어 restart가 제대로 되는지 확인해보겠다. 아래 명령어를 입력해보자.
 ```
 pm2 sendSignal SIGINT api-server
 ```
-명령어로 api-server 프로세스에 SIGINT를 준다.
+
 
 ![pm3](./images/pm3.png)
 <br>
