@@ -13,6 +13,7 @@ pm2 ecosystem // 이 커맨드를 입력하면 현재 디렉토리에 ecosystem.
 ```
 module.exports = {
   apps: [{
+  name: 'react-app',
   // 1. serve 파일 및 포트 설정
   script: 'serve -s build -l 5000'
   
@@ -47,4 +48,12 @@ pm2는 process manager로써 프로세스와 신호를 주고받아 이를 처�
 - 'listen_timeout': ready 신호가 오지 않으면 강제로 reload 시키는 시간을 설정한다.
 - 'kill_timeout': pm2는 프로세스 종료를 원할시 해당 프로세스로 SIGINT를 보내고, kill_timeout의 시간이 지난 뒤에 SIGKILL을 보내 프로세스를 종료시킨다. 이 시간을 4초로 설정하겠다.
 
+### 시작하기
+```
+pm2 start ecosystem.config.js
+```
+위 커맨드를 입력하면 된다.
+
 정적인 react build file 같은 경우는 사실 단 한번 web app을 다운로드 받으면 되는 일이기 때문에 프로세스 종료와 재시작같을때 신호를 주고 받는것이 무의미할 수 있다. Express server에서 pm2와 signal을 주고받는 flow를 다음글에서 설명하겠다.
+
+
